@@ -9,11 +9,6 @@ pipeline {
                     sh 'mvn clean compile'
                 }
             }
-            post{
-                success{
-                    archiveArtifacts 'target/*.jar'
-                }
-            }
         }
 
         stage ('Testing Stage') {
@@ -32,8 +27,11 @@ pipeline {
                     sh 'mvn package'
                 }
             }
+            post{
+                success{
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
         }
-
-
     }
 }
