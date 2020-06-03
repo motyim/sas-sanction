@@ -9,6 +9,11 @@ pipeline {
                     sh 'mvn clean compile'
                 }
             }
+            post{
+                success{
+                    archiceArtifacts 'target/*.jar'
+                }
+            }
         }
 
         stage ('Testing Stage') {
@@ -25,7 +30,6 @@ pipeline {
             steps {
                 withMaven(maven : 'maven') {
                     sh 'mvn package'
-                    sh 'mvn spring-boot:run '
                 }
             }
         }
