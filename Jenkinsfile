@@ -30,6 +30,7 @@ pipeline {
             }
             post{
                 success{
+                    sh 'service sas-sanction-demo stop'
                     sh 'rm -rf /sas/deployment/sas-sanction.jar'
                     sh 'cp -rp /var/lib/jenkins/workspace/demo/target/sas-sanction.jar /sas/deployment'
                     sh 'service sas-sanction-demo start'
