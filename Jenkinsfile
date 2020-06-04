@@ -32,7 +32,6 @@ pipeline {
                 success{
                     sh 'rm -rf /sas/deployment/sas-sanction.jar'
                     sh 'cp /var/lib/jenkins/workspace/demo/target/sas-sanction.jar /sas/deployment'
-                    sh 'java -jar /sas/deployment/sas-sanction.jar'
                     notify("Finished Stage Successfully")
                 }
             }
