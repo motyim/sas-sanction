@@ -31,7 +31,7 @@ pipeline {
                 success{
                     sh "service ${JOB_NAME} stop"
                     sh "rm -rf /sas/deployment/${JOB_NAME}.jar"
-                    sh "cp -rp /var/lib/jenkins/workspace/demo/${JOB_NAME}/${JOB_NAME}.jar /sas/deployment"
+                    sh "cp -rp /var/lib/jenkins/workspace/${JOB_NAME}/target/${JOB_NAME}.jar /sas/deployment"
                     sh "service ${JOB_NAME} start"
                     notify("Finished Stage Successfully")
                 }
