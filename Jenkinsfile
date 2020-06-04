@@ -31,7 +31,8 @@ pipeline {
             post{
                 success{
                     sh 'rm -rf /sas/deployment/sas-sanction.jar'
-                    sh 'cp /var/lib/jenkins/workspace/demo/target/sas-sanction.jar /sas/deployment'
+                    sh 'cp -rp /var/lib/jenkins/workspace/demo/target/sas-sanction.jar /sas/deployment'
+                    sh 'service sas-sanction-demo start'
                     notify("Finished Stage Successfully")
                 }
             }
