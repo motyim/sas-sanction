@@ -26,11 +26,13 @@ pipeline {
             steps {
                 withMaven(maven : 'maven') {
                     sh 'mvn package'
-                    sh 'mvn spring-boot:run'
                 }
             }
             post{
                 success{
+                    sh 'rm -rf /sas/deployment/sas-sanction.jar'
+                    sh 'cp /var/lib/jenkins/workspace/demo/target/sas-sanction.jar /sas/deployment'
+                    sh 'nohup mvn -Dspring-boot.run.folders=/sas/deployment spring-boot:run &'
                     notify("Finished Stage Successfully")
                 }
             }
@@ -41,7 +43,7 @@ pipeline {
 def notify(status){
     emailext (
       to: "mohamed.elmotyim@sas.com",
-      subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      subject: "Build Finished",
       body: """${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
         Check console output at : ${env.BUILD_URL} ${env.JOB_NAME} [${env.BUILD_NUMBER}]""",
     )
