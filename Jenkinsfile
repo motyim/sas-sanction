@@ -1,7 +1,6 @@
 pipeline {
     agent any
 
-
     stages {
         stage ('Compile Stage') {
 
@@ -30,10 +29,10 @@ pipeline {
             }
             post{
                 success{
-                    sh 'service sas-sanction-demo stop'
-                    sh 'rm -rf /sas/deployment/sas-sanction.jar'
-                    sh 'cp -rp /var/lib/jenkins/workspace/demo/target/sas-sanction.jar /sas/deployment'
-                    sh 'service sas-sanction-demo start'
+                    sh 'service ${env.JOB_NAME} stop'
+                    sh 'rm -rf /sas/deployment/${env.JOB_NAME}.jar'
+                    sh 'cp -rp /var/lib/jenkins/workspace/demo/target/${env.JOB_NAME}.jar /sas/deployment'
+                    sh 'service ${env.JOB_NAME} start'
                     notify("Finished Stage Successfully")
                 }
             }
