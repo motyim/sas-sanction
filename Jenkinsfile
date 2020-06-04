@@ -29,10 +29,10 @@ pipeline {
             }
             post{
                 success{
-                    sh 'service ${env.JOB_NAME} stop'
-                    sh 'rm -rf /sas/deployment/${env.JOB_NAME}.jar'
-                    sh 'cp -rp /var/lib/jenkins/workspace/demo/target/${env.JOB_NAME}.jar /sas/deployment'
-                    sh 'service ${env.JOB_NAME} start'
+                    sh "service ${JOB_NAME} stop"
+                    sh "rm -rf /sas/deployment/${JOB_NAME}.jar"
+                    sh "cp -rp /var/lib/jenkins/workspace/demo/target/${JOB_NAME}.jar /sas/deployment"
+                    sh "service ${JOB_NAME} start"
                     notify("Finished Stage Successfully")
                 }
             }
