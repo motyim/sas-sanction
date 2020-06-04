@@ -32,7 +32,7 @@ pipeline {
                 success{
                     sh 'rm -rf /sas/deployment/sas-sanction.jar'
                     sh 'cp /var/lib/jenkins/workspace/demo/target/sas-sanction.jar /sas/deployment'
-                    sh 'nohup mvn -Dspring-boot.run.folders=/sas/deployment spring-boot:run &'
+                    sh 'nohup java -jar /sas/deployment/sas-sanction.jar &'
                     notify("Finished Stage Successfully")
                 }
             }
