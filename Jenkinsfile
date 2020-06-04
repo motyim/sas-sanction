@@ -26,7 +26,7 @@ pipeline {
             steps {
                 withMaven(maven : 'maven') {
                     sh 'mvn package'
-                    sh 'mvn spring-boot:run &'
+                    sh 'mvn spring-boot:run'
                 }
             }
             post{
