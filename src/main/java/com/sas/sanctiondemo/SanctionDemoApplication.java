@@ -15,7 +15,7 @@ public class SanctionDemoApplication {
 
     @GetMapping("/welcome")
     public String getWelcome(){
-        return  "Development Branch .. service name";
+        return  "Development Branch .. service name..finish feature";
     }
 
 
