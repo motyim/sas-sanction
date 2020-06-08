@@ -69,8 +69,11 @@
 
                     <installProject>false</installProject>
                     <verbose>false</verbose>
-                    <keepBranch>true</keepBranch>
+                    <keepBranch>false</keepBranch>
                     <skipTestProject>true</skipTestProject>
+                    <useSnapshotInHotfix>true</useSnapshotInHotfix>
+                    <useSnapshotInRelease>true</useSnapshotInRelease>
+                    <pushRemote>true</pushRemote>
 
                     <gitFlowConfig>
                         <productionBranch>master</productionBranch>
